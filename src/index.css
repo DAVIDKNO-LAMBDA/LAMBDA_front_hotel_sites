@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  /* 
+    DESIGN SYSTEM - Hotel Sites Dashboard
+    Sistema de tokens de diseño para dashboard profesional de Business Intelligence
+    Todos los colores están en formato HSL para mejor control
+  */
+  :root {
+    /* Colores base - Fondo y texto principal */
+    --background: 210 20% 98%; /* Gris muy claro con tinte azul */
+    --foreground: 215 25% 15%; /* Texto oscuro profesional */
+
+    /* Tarjetas - Contenedores de información */
+    --card: 0 0% 100%; /* Blanco puro para tarjetas */
+    --card-foreground: 215 25% 15%;
+
+    /* Popovers y dropdowns */
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    /* Color primario - Azul corporativo */
+    --primary: 215 85% 35%; /* Azul profesional intenso */
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 215 85% 50%; /* Azul más claro para hovers */
+    
+    /* Color secundario - Gris neutro */
+    --secondary: 210 15% 92%;
+    --secondary-foreground: 215 25% 25%;
+
+    /* Muted - Elementos desactivados o secundarios */
+    --muted: 210 15% 95%;
+    --muted-foreground: 215 15% 50%;
+
+    /* Accent - Para destacar información importante */
+    --accent: 215 85% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive - Errores y alertas negativas */
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Success - Indicadores positivos (ganancias, cumplimiento) */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --success-light: 142 70% 45%;
+
+    /* Warning - Alertas y advertencias */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Bordes y inputs */
+    --border: 215 20% 88%;
+    --input: 215 20% 88%;
+    --ring: 215 85% 35%;
+
+    --radius: 0.75rem; /* Bordes más redondeados para look moderno */
+
+    /* Sidebar - Navegación lateral */
+    --sidebar-background: 215 30% 16%; /* Azul oscuro profesional */
+    --sidebar-foreground: 210 15% 85%;
+    --sidebar-primary: 215 85% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 30% 22%;
+    --sidebar-accent-foreground: 210 15% 95%;
+    --sidebar-border: 215 25% 20%;
+    --sidebar-ring: 215 85% 50%;
+
+    /* KPI Cards - Colores para diferentes tipos de métricas */
+    --kpi-positive: 142 76% 36%; /* Verde para indicadores positivos */
+    --kpi-negative: 0 75% 55%; /* Rojo para indicadores negativos */
+    --kpi-neutral: 215 15% 50%; /* Gris para indicadores neutrales */
+    
+    /* Charts - Colores para gráficos */
+    --chart-1: 215 85% 50%; /* Azul - Línea principal */
+    --chart-2: 142 70% 45%; /* Verde - Comparativa positiva */
+    --chart-3: 280 65% 60%; /* Púrpura - Datos históricos */
+    --chart-4: 38 92% 50%; /* Naranja - Forecast/Predicciones */
+    --chart-5: 0 75% 55%; /* Rojo - Alertas/Negativos */
+
+    /* Shadows - Sombras para profundidad */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    
+    /* Transitions - Animaciones suaves */
+    --transition-base: all 0.2s ease-in-out;
+  }
+
+  /* Tema oscuro (opcional para futuras implementaciones) */
+  .dark {
+    --background: 215 30% 10%;
+    --foreground: 210 15% 90%;
+    --card: 215 30% 14%;
+    --card-foreground: 210 15% 90%;
+    --popover: 215 30% 14%;
+    --popover-foreground: 210 15% 90%;
+    --primary: 215 85% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 25% 20%;
+    --secondary-foreground: 210 15% 90%;
+    --muted: 215 25% 18%;
+    --muted-foreground: 215 15% 60%;
+    --accent: 215 85% 45%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 75% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 215 25% 22%;
+    --input: 215 25% 22%;
+    --ring: 215 85% 50%;
+    --sidebar-background: 215 35% 8%;
+    --sidebar-foreground: 210 15% 80%;
+    --sidebar-primary: 215 85% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 30% 15%;
+    --sidebar-accent-foreground: 210 15% 85%;
+    --sidebar-border: 215 25% 12%;
+    --sidebar-ring: 215 85% 50%;
+  }
+}
+
+@layer base {
+  /* Aplicar estilos base a todos los elementos */
+  * {
+    @apply border-border;
+  }
+
+  /* Estilos del body - Fondo y texto principal */
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Scrollbar personalizada para mejor apariencia */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+}
+
+/* Utilidades personalizadas para el dashboard */
+@layer utilities {
+  /* Animación suave para hover en tarjetas */
+  .card-hover {
+    @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5;
+  }
+
+  /* Gradiente para headers y elementos destacados */
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-light)) 100%);
+  }
+
+  /* Texto con gradiente */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  }
+}
